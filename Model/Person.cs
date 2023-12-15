@@ -1,7 +1,6 @@
 ﻿using _1_lr_oop.Model;
 using System.Text.RegularExpressions;
 
-
 namespace Model
 {
     /// <summary>
@@ -38,9 +37,6 @@ namespace Model
                 }
             }
         }   
-
-
-
         /// <summary>
         /// гендер персоны.
         /// </summary>
@@ -70,6 +66,11 @@ namespace Model
             _age = age;
             Gender = gender;
         }
+        /// <summary>
+        /// Проверка на вхождение в диапазон
+        /// </summary>
+        /// <param name="age">принимаемый возраст.</param>
+        /// <returns>сообщение об исключениях.</returns>
         public static bool CheckAge(int age)
         {
             bool flag = false;
@@ -94,6 +95,11 @@ namespace Model
             }
             
         }
+        /// <summary>
+        /// проверка на ввод только русских или внглийских имен и фамилий
+        /// </summary>
+        /// <param name="name_surname">имя и фамилия</param>
+        /// <returns> ссобщение в случае ошибки.</returns>
         public static string ChecknamesSurenames(string name_surname)
         {
             {
@@ -114,6 +120,11 @@ namespace Model
                 }
             }
         }
+        /// <summary>
+        /// Проверка регистра(недоделано)
+        /// </summary>
+        /// <param name="namesurename">принимаемые имя и фамилия.</param>
+        /// <returns>имя и фамилия с учетом регистра</returns>
         public static string CheckRegister(string namesurename)
         {
             Regex checkregex = new Regex(@"(\w)");
