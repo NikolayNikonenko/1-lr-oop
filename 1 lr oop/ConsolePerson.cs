@@ -5,6 +5,8 @@
     using System.Text.RegularExpressions;
     using _1_lr_oop.Model;
     using System.Text.RegularExpressions;
+    using System.Xml.Linq;
+
     /// <summary>
     /// добавление и печать персоны через консоль.
     /// </summary>
@@ -31,13 +33,36 @@
         /// <returns> Новая персона.</returns>
         public static Person AddPersonWithConsole()
         {
-            Console.Write($"Введите имя персоны: ");
-            string name = Console.ReadLine();
-            name = Person.ChecknamesSurenames(name);
+            string name;
+            while (true)
+            {
+                Console.Write($"Введите имя персоны: ");
+                name = Console.ReadLine();
+                if (!Person.ChecknamesSurenames(name))
+                {
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
+            }
 
-            Console.Write($"Введите фамилию персоны: ");
-            string surname = Console.ReadLine();
-            surname = Person.ChecknamesSurenames(surname);
+            string surname;
+
+            while (true)
+            {
+                Console.Write($"Введите фамилию персоны: ");
+                surname = Console.ReadLine();
+                if (!Person.ChecknamesSurenames(surname))
+            {
+                continue;
+            }
+            else
+            {
+                break;
+            }
+        }
 
             int age = 0;
             while (true)

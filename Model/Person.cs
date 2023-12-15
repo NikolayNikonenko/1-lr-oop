@@ -90,8 +90,6 @@ namespace Model
                 {
                     Console.WriteLine($"Ошибка: {ex.Message}");
                 return flag;
-
-
             }
             
         }
@@ -100,10 +98,10 @@ namespace Model
         /// </summary>
         /// <param name="name_surname">имя и фамилия</param>
         /// <returns> ссобщение в случае ошибки.</returns>
-        public static string ChecknamesSurenames(string name_surname)
+        public static bool ChecknamesSurenames(string name_surname)
         {
             {
-                while (true)
+                bool flag = false;
                 {
                     
                     Regex regex = new Regex(@"[А-я,A-z-]+");
@@ -111,11 +109,12 @@ namespace Model
                     {
                         Console.WriteLine("Имя и фамилия должны содержать " +
                             "толко русские или английскик буквы");
-                        continue;
+                        return flag;
                     }
                     else
                     {
-                        return name_surname;
+                        flag=true;
+                        return flag;
                     }
                 }
             }
