@@ -12,42 +12,42 @@ namespace ConsoleApp
         /// </summary>
         private static void Main()
         {
-            Console.WriteLine("Каждый новый шаг выполняется по нажатию" +
-                " любой клавиши клавиатуры.\nНажмите любую клавишу.");
-            Console.ReadKey();
+            //Console.WriteLine("Каждый новый шаг выполняется по нажатию" +
+            //    " любой клавиши клавиатуры.\nНажмите любую клавишу.");
+            //Console.ReadKey();
 
-            // а.Создание программно двух списков персон,
-            // в каждом из которых будет по три человека.
-            Console.WriteLine("\n\t\tСоздание программно двух списков" +
-                " персон, в каждом из которых будет по три человека.");
-            Console.ReadKey();
+            //// а.Создание программно двух списков персон,
+            //// в каждом из которых будет по три человека.
+            //Console.WriteLine("\n\t\tСоздание программно двух списков" +
+            //    " персон, в каждом из которых будет по три человека.");
+            //Console.ReadKey();
 
             PersonList personlist1 = new PersonList();
             PersonList personlist2 = new PersonList();
 
-            // Создание исходного списка персон 1
-            for (int i = 0; i < 3; i++)
-            {
-                personlist1.Add(RandomPerson.GetRandomPerson());
-            }
+            //// Создание исходного списка персон 1
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    personlist1.Add(RandomPerson.GetRandomPerson());
+            //}
 
-            // Создание исходного списка персон 2
-            for (int i = 0; i < 3; i++)
-            {
-                personlist2.Add(RandomPerson.GetRandomPerson());
-            }
+            //// Создание исходного списка персон 2
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    personlist2.Add(RandomPerson.GetRandomPerson());
+            //}
 
-            // b. Вывод содержимое каждого списка персон на экран
-            Console.WriteLine("\n\t\tВывод списков на экран.");
-            Console.ReadKey();
+            //// b. Вывод содержимое каждого списка персон на экран
+            //Console.WriteLine("\n\t\tВывод списков на экран.");
+            //Console.ReadKey();
 
-            // Печать исходного списка 1
-            Console.WriteLine("Список №1:");
-            ConsolePerson.Print(personlist1);
+            //// Печать исходного списка 1
+            //Console.WriteLine("Список №1:");
+            //ConsolePerson.Print(personlist1);
 
-            // Печать исходного списка 2
-            Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personlist2);
+            //// Печать исходного списка 2
+            //Console.WriteLine("\nСписок №2:");
+            //ConsolePerson.Print(personlist2);
 
             // c. Добавление нового человека в список 1
             Console.WriteLine("\n\t\tДобавление человека в список №1.");

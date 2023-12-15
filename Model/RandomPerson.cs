@@ -39,7 +39,7 @@ namespace Model
             Random random = new Random();
 
             Gender gender = (Gender)random.Next(2);
-            int age = random.Next(1, 100);
+            int age = random.Next(1,120);
             string name;
             string surname;
 

@@ -1,13 +1,10 @@
-﻿using _1_lr_oop.Model;
-using System.Text.RegularExpressions;
-using Model;
-
-namespace ConsoleApp
+﻿namespace ConsoleApp
 {
     using _1_lr_oop.Model;
     using Model;
     using System.Text.RegularExpressions;
-
+    using _1_lr_oop.Model;
+    using System.Text.RegularExpressions;
     /// <summary>
     /// добавление и печать персоны через консоль.
     /// </summary>
@@ -36,12 +33,30 @@ namespace ConsoleApp
         {
             Console.Write($"Введите имя персоны: ");
             string name = Console.ReadLine();
+            name = Person.ChecknamesSurenames(name);
 
             Console.Write($"Введите фамилию персоны: ");
             string surname = Console.ReadLine();
+            surname = Person.ChecknamesSurenames(surname);
 
-            Console.Write($"Введите возраст персоны: ");
-            int age = Convert.ToInt32(Console.ReadLine());
+            int age = 0;
+            while (true)
+            {
+                Console.Write($"Введите возраст персоны: ");
+                if (!int.TryParse(Console.ReadLine(), out age))
+                {
+                    Console.WriteLine("Возраст должен быть числом");
+                    continue;
+                }
+                else if (!Person.CheckAge(age))
+                {
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
+            }
 
             Console.Write($"Введите пол человека (1 - Мужской или 0 - Женский): ");
             int pregen = Convert.ToInt32(Console.ReadLine());

@@ -8,7 +8,7 @@
         /// <summary>
         /// Список персон
         /// </summary>
-        private List<Person> _people = new List<Person>();
+        private List<Person> _peoples = new List<Person>();
 
         /// <summary>
         /// Добавление персоны.
@@ -16,7 +16,7 @@
         /// <param name="people">имя.</param>
         public void Add(Person person)
         {
-            _people.Add(person);
+            _peoples.Add(person);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@
         /// <param name="people">имя.</param>
         public void DeleteAll()
         {
-            _people.Clear();
+            _peoples.Clear();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@
         /// <param name="index"></param>
         public void DeleteByIndex(int index)
         {
-            int countIndex = _people.Count - 1;
+            int countIndex = _peoples.Count - 1;
 
             if (countIndex < index)
             {
@@ -44,7 +44,7 @@
             }
             else
             {
-                _people.RemoveAt(index);
+                _peoples.RemoveAt(index);
             }
         }
 
@@ -57,7 +57,7 @@
         {
             // Удаляет персоны из списка по условию
             // и возвращает кол-во удалений.
-            int count = _people.RemoveAll(s => s.Surname == surname);
+            int count = _peoples.RemoveAll(s => s.Surname == surname);
             return count;
         }
 
@@ -68,7 +68,7 @@
         /// <param name="index">соответствующий индекс.</param>
         public Person FindByIndex(int index)
         {
-            int countIndex = _people.Count - 1;
+            int countIndex = _peoples.Count - 1;
 
             if (countIndex < index)
             {
@@ -77,7 +77,7 @@
             }
             else
             {
-                return _people[index];
+                return _peoples[index];
             }
         }
 
@@ -88,7 +88,7 @@
         /// <returns>индекс персоны.</returns>
         public int FindIndex(string surname)
         {
-            int index = _people.FindIndex(s => s.Surname == surname);
+            int index = _peoples.FindIndex(s => s.Surname == surname);
             return index;
         }
 
@@ -99,7 +99,7 @@
         /// <returns>количество персон.</returns>
         public int CountElementsList()
         {
-            return _people.Count;
+            return _peoples.Count;
         }
     }
 }
