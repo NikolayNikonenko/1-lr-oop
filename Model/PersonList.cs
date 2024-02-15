@@ -49,14 +49,13 @@
         }
 
         /// <summary>
-        /// Удаление выбранной персоны по фамилии.
+        /// Удаляет персоны из списка по условию 
+        /// и возвращает кол-во удалений.
         /// </summary>
         /// <param name="people">имя.</param>
         /// <returns>список без выбранной персоны.</returns>
         public int DeleteBySurname(string surname)
         {
-            // Удаляет персоны из списка по условию
-            // и возвращает кол-во удалений.
             int count = _peoples.RemoveAll(s => s.Surname == surname);
             return count;
         }

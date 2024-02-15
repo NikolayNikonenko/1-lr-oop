@@ -24,7 +24,6 @@ namespace ConsoleApp
 
             PersonList personlist1 = new PersonList();
             PersonList personlist2 = new PersonList();
-
             // Создание исходного списка персон 1
             for (int i = 0; i < 3; i++)
             {

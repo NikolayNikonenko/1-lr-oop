@@ -7,8 +7,15 @@
         /// </summary>
         public enum Gender
         {
+            /// <summary>
+            /// Мужской пол.
+            /// </summary>
             Male,
-            Female,
+
+            /// <summary>
+            /// Женский пол.
+            /// </summary>
+            Female
         }
     }
 }
