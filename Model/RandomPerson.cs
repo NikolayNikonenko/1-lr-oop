@@ -1,6 +1,4 @@
-﻿using _1_lr_oop.Model;
-
-namespace Model
+﻿namespace Model
 {
     /// <summary>
     /// Класс для создания
@@ -27,7 +25,7 @@ namespace Model
 
             string[] menSurname =
                 {
-                "Абрамов", "Иванов", "Воробьев", "Петухов",
+                "Абрамов", "Иванов", "Воробьев", "Арбузов",
                 "Соловьев", "Калинин", "Чириков", "Дятлов",
                 };
             string[] womenSurname =
@@ -39,7 +37,7 @@ namespace Model
             Random random = new Random();
 
             Gender gender = (Gender)random.Next(2);
-            int age = random.Next(1,120);
+            int age = random.Next(1, 120);
             string name;
             string surname;
 

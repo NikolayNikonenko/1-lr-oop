@@ -1,13 +1,6 @@
 ﻿namespace ConsoleApp
 {
-    using _1_lr_oop.Model;
     using Model;
-    using System.Text.RegularExpressions;
-    using _1_lr_oop.Model;
-    using System.Text.RegularExpressions;
-    using System.Xml.Linq;
-    using System.Security.Cryptography.X509Certificates;
-    using System;
 
     /// <summary>
     /// добавление и печать персоны через консоль.
@@ -35,40 +28,102 @@
         /// <returns> Новая персона.</returns>
         public static Person AddPersonWithConsole()
         {
-            Console.Write($"Введите имя персоны: ");
-            string name = Console.ReadLine();
-            string truename = Person.ChecknamesSurenames(name);
-            Console.Write($"Введите фамилию персоны: ");
-            string surname =Console.ReadLine();
-            string truesurename = Person.ChecknamesSurenames(surname);
-
-            Console.Write($"Введите возраст персоны: ");
-            int age;
-            if (!int.TryParse(Console.ReadLine(), out age))
+            Person newPerson = new Person();
+            var actionList = new List<Action>
             {
-                throw new ArgumentException("Везраст должен быть числом");
+                () =>
+                {
+                    Console.WriteLine("Введите имя человека");
+                    string name = Console.ReadLine();
+                    newPerson.Name = Person.CheckString(name);
+                },
+                () =>
+                {
+                    Console.WriteLine("Введите фамилию человека");
+                    string surename = Person.CheckString(Console.ReadLine());
+                    if (Person.CheckLanguage(newPerson.Name) == Person.CheckLanguage(surename))
+                    {
+                        newPerson.Surename = surename;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Фамилия и имя должны быть написаны на одном языке," +
+                            " введите повторно!");
+                    }
+                },
+                () =>
+                {
+                    Console.WriteLine("Введите Возраст человека");
+                    bool result = ushort.TryParse(Console.ReadLine(), out ushort age);
+                    if (result != true)
+                    {
+                        throw new ArgumentException("Возраст не должен быть отрицательным," +
+                            " введите повторно!");
+                    }
+                    else
+                    {
+                    newPerson.Age = age;
+                    }
+                },
+                () =>
+                {
+                    Console.WriteLine("Введите пол человека(Мужской/Женский)");
+                    string inputGender = Console.ReadLine().ToLower();
+                    if (inputGender == "м" || inputGender == "m")
+                    {
+                         newPerson.Gender = Gender.Male;
+                    }
+                    else if (inputGender == "ж" || inputGender == "f")
+                         {
+                            newPerson.Gender = Gender.Female;
+                         }
+                    else
+                    {
+                         throw new ArgumentOutOfRangeException("Введен некорректный пол, " +
+                             "введите: м если мужской или: ж если женский");
+                    }
+                },
+            };
+            foreach (var action in actionList)
+            {
+                ActionHandler(action);
             }
 
-            int trueage = Person.CheckAge(age);
+            return newPerson;
+        }
 
-            Console.Write($"Введите пол человека (м - Мужской или ж - Женский): ");
-            string pregen = Console.ReadLine();
-            Gender gen = Gender.Male;
-            if (pregen == "м")
+        /// <summary>
+        /// Получение значений, введенных пользователемю.
+        /// </summary>
+        /// <param name="action">Действие.</param>
+        private static void ActionHandler(Action action)
+        {
+            while (true)
             {
-                gen = Gender.Male;
-            }
-            else if (pregen == "ж")
-            {
-                gen = Gender.Female;
-            }
-            else
-            {
-                 throw new ArgumentException("Введен некорректный пол, " +
-                     "введите: м если мужской или: ж если женский");
-            }
+                try
+                {
+                    action.Invoke();
+                    return;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine($"Возникло исключение {ex.Message}");
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Console.WriteLine($"Возникло исключение {ex.Message}");
+                }
+                catch (ArgumentNullException ex)
+                {
+                    Console.WriteLine($"Возникло исключение {ex.Message}");
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine($"Возникло исключение {ex.Message}");
+                }
 
-            return new Person(name, surname, age, gen);
+                Console.WriteLine("\n!Ошибка ввода!\nПопробуйте снова:");
+            }
         }
     }
 }

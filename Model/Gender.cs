@@ -1,9 +1,7 @@
-﻿namespace _1_lr_oop
+﻿namespace Model
 {
-    namespace Model
-    {
         /// <summary>
-        /// гендер персоны.
+        /// ол персоны.
         /// </summary>
         public enum Gender
         {
@@ -17,5 +15,4 @@
             /// </summary>
             Female
         }
-    }
 }

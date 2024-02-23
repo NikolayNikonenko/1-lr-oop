@@ -1,7 +1,7 @@
-﻿using Model;
-
-namespace ConsoleApp
+﻿namespace ConsoleApp
 {
+    using Model;
+
     /// <summary>
     /// Основная программа.
     /// </summary>
@@ -22,18 +22,19 @@ namespace ConsoleApp
                 " персон, в каждом из которых будет по три человека.");
             Console.ReadKey();
 
-            PersonList personlist1 = new PersonList();
-            PersonList personlist2 = new PersonList();
+            PersonList personList1 = new PersonList();
+            PersonList personList2 = new PersonList();
+
             // Создание исходного списка персон 1
             for (int i = 0; i < 3; i++)
             {
-                personlist1.Add(RandomPerson.GetRandomPerson());
+                personList1.Add(RandomPerson.GetRandomPerson());
             }
 
             // Создание исходного списка персон 2
             for (int i = 0; i < 3; i++)
             {
-                personlist2.Add(RandomPerson.GetRandomPerson());
+                personList2.Add(RandomPerson.GetRandomPerson());
             }
 
             // b. Вывод содержимое каждого списка персон на экран
@@ -42,20 +43,20 @@ namespace ConsoleApp
 
             // Печать исходного списка 1
             Console.WriteLine("Список №1:");
-            ConsolePerson.Print(personlist1);
+            ConsolePerson.Print(personList1);
 
             // Печать исходного списка 2
             Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personlist2);
+            ConsolePerson.Print(personList2);
 
             // c. Добавление нового человека в список 1
             Console.WriteLine("\n\t\tДобавление человека в список №1.");
             Console.ReadKey();
-            personlist1.Add(ConsolePerson.AddPersonWithConsole());
+            personList1.Add(ConsolePerson.AddPersonWithConsole());
 
             // Печать списка 1
             Console.WriteLine("\nСписок №1 с добавлением:");
-            ConsolePerson.Print(personlist1);
+            ConsolePerson.Print(personList1);
 
             // d.Скопируйте второго человека из первого списка
             // в конец второго списка.
@@ -65,20 +66,13 @@ namespace ConsoleApp
             Console.WriteLine("\n\t\tКопирование 2-ого человека из" +
                 " первого списка в конец второго списка.");
             Console.ReadKey();
-            try
-            {
-                personlist2.Add(personlist1.FindByIndex(1));
-            }
-            catch (IndexOutOfRangeException exception)
-            {
-                Console.WriteLine($"Error: {exception.Message}");
-            }
+            personList2.Add(personList1.FindByIndex(1));
 
             Console.WriteLine("\nСписок №1:");
-            ConsolePerson.Print(personlist1);
+            ConsolePerson.Print(personList1);
 
             Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personlist2);
+            ConsolePerson.Print(personList2);
 
             // e.Удалите второго человека из первого списка. Покажите, что
             // удаление человека из первого списка
@@ -86,31 +80,24 @@ namespace ConsoleApp
             Console.WriteLine("\n\t\tУдаление второго человека" +
                 " из первого списка.");
             Console.ReadKey();
-            try
-            {
-                personlist1.DeleteByIndex(1);
-            }
-            catch (IndexOutOfRangeException exception)
-            {
-                Console.WriteLine($"Error: {exception.Message}");
-            }
+            personList1.DeleteByIndex(1);
 
             Console.WriteLine("\nСписок №1:");
-            ConsolePerson.Print(personlist1);
+            ConsolePerson.Print(personList1);
 
             Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personlist2);
+            ConsolePerson.Print(personList2);
 
             // f.Очистка второго списка.
             Console.WriteLine("\n\t\tОчищение второго списка.");
             Console.ReadKey();
-            personlist2.DeleteAll();
+            personList2.DeleteAll();
 
             Console.WriteLine("\nСписок №1:");
-            ConsolePerson.Print(personlist1);
+            ConsolePerson.Print(personList1);
 
             Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personlist2);
+            ConsolePerson.Print(personList2);
             Console.ReadKey();
         }
     }
