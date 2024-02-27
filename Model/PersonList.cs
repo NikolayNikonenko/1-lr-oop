@@ -78,13 +78,10 @@
         }
 
         /// <summary>
-        /// Колличество персон в списке.
+        /// Gets Колличество персон в списке.
         /// </summary>
         /// <param name="people">счетчик персон.</param>
         /// <returns>количество персон.</returns>
-        public int CountElementsList()
-        {
-            return _peoples.Count;
-        }
+        public int CountElementsList => this._peoples.Count;
     }
 }
