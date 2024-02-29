@@ -13,7 +13,7 @@
         /// <param name="people"> Список.</param>
         public static void Print(PersonList people)
         {
-            int count = people.CountElementsList();
+            int count = people.CountElementsList;
 
             for (int i = 0; i < count; i++)
             {
@@ -57,7 +57,7 @@
                     bool result = ushort.TryParse(Console.ReadLine(), out ushort age);
                     if (result != true)
                     {
-                        throw new ArgumentException("Возраст не должен быть отрицательным," +
+                        throw new ArgumentException("Возраст не должен быть отрицательным, и должен быть числом," +
                             " введите повторно!");
                     }
                     else
