@@ -47,8 +47,8 @@
                     }
                     else
                     {
-                        throw new ArgumentException("Фамилия и имя должны быть написаны на одном языке," +
-                            " введите повторно!");
+                        throw new ArgumentException("Фамилия и имя должны быть написаны на " +
+                            "одном языке, введите повторно!");
                     }
                 },
                 () =>
@@ -57,8 +57,8 @@
                     bool result = ushort.TryParse(Console.ReadLine(), out ushort age);
                     if (result != true)
                     {
-                        throw new ArgumentException("Возраст не должен быть отрицательным, и должен быть числом," +
-                            " введите повторно!");
+                        throw new ArgumentException("Возраст не должен быть отрицательным, " +
+                            "и должен быть числом, введите повторно!");
                     }
                     else
                     {
@@ -69,19 +69,29 @@
                 {
                     Console.WriteLine("Введите пол человека(Мужской/Женский)");
                     string inputGender = Console.ReadLine().ToLower();
-                    if (inputGender == "м" || inputGender == "m")
+                    switch (inputGender)
                     {
-                         newPerson.Gender = Gender.Male;
-                    }
-                    else if (inputGender == "ж" || inputGender == "f")
-                         {
+                        case "м":
+                        case "m":
+                        {
+                            newPerson.Gender = Gender.Male;
+                            break;
+                        }
+
+                        case "ж":
+                        case "f":
+                        {
                             newPerson.Gender = Gender.Female;
-                         }
-                    else
-                    {
-                         throw new ArgumentOutOfRangeException("Введен некорректный пол, " +
+                            break;
+                        }
+
+                        default:
+                        {
+                                throw new ArgumentOutOfRangeException("Введен некорректный пол, " +
                              "введите: м если мужской или: ж если женский");
+                        }
                     }
+
                 },
             };
             foreach (var action in actionList)
@@ -105,21 +115,20 @@
                     action.Invoke();
                     return;
                 }
-                catch (FormatException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
-                }
-                catch (ArgumentOutOfRangeException ex)
-                {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
-                }
-                catch (ArgumentNullException ex)
-                {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
-                }
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
+                    var exceptionType = ex.GetType();
+                    if (exceptionType == typeof(FormatException)
+                        || exceptionType == typeof(ArgumentOutOfRangeException)
+                        || exceptionType == typeof(ArgumentNullException)
+                        || exceptionType == typeof(ArgumentException))
+                    {
+                        Console.WriteLine($"Возникло исключение {ex.Message}");
+                    }
+                    else
+                    {
+                        throw ex;
+                    }
                 }
 
                 Console.WriteLine("\n!Ошибка ввода!\nПопробуйте снова:");

@@ -30,12 +30,12 @@
         /// <summary>
         /// Минимальный возраст.
         /// </summary>
-        private const int _min = 0;
+        public const int Min = 0;
 
         /// <summary>
         /// Максимальный возраст.
         /// </summary>
-        private const int _max = 120;
+        public const int Max = 120;
 
         /// <summary>
         /// возраст персоны.
@@ -101,8 +101,10 @@
         /// <param name="value">имя.</param>
         /// <param name="propertyName">Имя для обновления исключения. </param>
         /// <returns>Значение имени, если строка не пуста.</returns>
-        /// <exception cref="System.ArgumentNullException">Выдает исключение если значение равно null.</exception>
-        /// <exception cref="System.ArgumentException">Выдает исключение в случае если пустой строки .</exception>
+        /// <exception cref="ArgumentNullException">Выдает исключение,
+        /// в если значение равно null.</exception>
+        /// <exception cref="ArgumentException">Выдает исключение,
+        /// в случае если пустой строки .</exception>
         public static string CheckString(string value)
         {
             if (value == null)
@@ -123,15 +125,8 @@
         /// </summary>
         public Gender Gender
         {
-            get
-            {
-                return _gender;
-            }
-
-            set
-            {
-                _gender = value;
-            }
+            get;
+            set;
         }
 
         /// <summary>
@@ -172,17 +167,18 @@
         /// </summary>
         /// <param name="value">Принимаемый возраст персоны.</param>
         /// <returns>Возраст персоны.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Выдает исключение в случае выхода возраста за диапазон.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Выдает исключение ,
+        /// в случае выхода возраста за диапазон.</exception>
         public static int CheckAge(int value)
         {
-            if (value <= _max && value >= _min)
+            if (value <= Max && value >= Min)
             {
                 return value;
             }
             else
             {
                 throw new ArgumentException("Введен некорректный возраст," +
-                    $"введите возраст от {_min} до {_max} лет");
+                    $"введите возраст от {Min} до {Max} лет");
             }
         }
 
@@ -191,11 +187,12 @@
         /// </summary>
         /// <param name="nameSurname">Вводимая строка.</param>
         /// <returns>Имя и фамилия персоны с возможностью задания через -.</returns>
-        /// <exception cref="FormatException">В случае если слово написано на ином языке.</exception>
+        /// <exception cref="FormatException">В случае,
+        /// если слово написано на ином языке.</exception>
         public static string CheckNameSurename(string nameSurname)
         {
-            Regex regex = new Regex(@"([А-я]+(-[А-я]+)?)|([A-z]+(-[A-z]+)?)");
-            if (!regex.IsMatch(nameSurname))
+            Regex regex = new Regex(@"([^A-zА-я-]+)");
+            if (regex.IsMatch(nameSurname))
             {
                 throw new FormatException("Введенное слово не распозноно," +
                     "проверьте правильность введенного слова и введите повторно");
