@@ -101,6 +101,7 @@
         /// <param name="value">имя.</param>
         /// <param name="propertyName">Имя для обновления исключения. </param>
         /// <returns>Значение имени, если строка не пуста.</returns>
+        /// //TODO: RSDN
         /// <exception cref="System.ArgumentNullException">Выдает исключение если значение равно null.</exception>
         /// <exception cref="System.ArgumentException">Выдает исключение в случае если пустой строки .</exception>
         public static string CheckString(string value)
@@ -118,6 +119,7 @@
             return value;
         }
 
+        //TODO: autoproperty
         /// <summary>
         /// гендер персоны.
         /// </summary>
@@ -172,6 +174,7 @@
         /// </summary>
         /// <param name="value">Принимаемый возраст персоны.</param>
         /// <returns>Возраст персоны.</returns>
+        /// //TODO: RSDN
         /// <exception cref="ArgumentOutOfRangeException">Выдает исключение в случае выхода возраста за диапазон.</exception>
         public static int CheckAge(int value)
         {
@@ -194,6 +197,7 @@
         /// <exception cref="FormatException">В случае если слово написано на ином языке.</exception>
         public static string CheckNameSurename(string nameSurname)
         {
+            //TODO: BUG
             Regex regex = new Regex(@"([А-я]+(-[А-я]+)?)|([A-z]+(-[A-z]+)?)");
             if (!regex.IsMatch(nameSurname))
             {
@@ -240,9 +244,9 @@
             Regex russian = new Regex(@"[а-яА-Я]");
             Regex english = new Regex(@"[a-zA-Z]");
             if (russian.IsMatch(nameSurename))
-                {
+            {
                 return true;
-                }
+            }
 
             if (english.IsMatch(nameSurename))
             {

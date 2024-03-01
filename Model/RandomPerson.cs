@@ -12,10 +12,11 @@
         /// <returns>рандомная персона.</returns>
         public static Person GetRandomPerson()
         {
+            //TODO: RSDN
             string[] menName =
                 {
-                "Петр", "Дмитрий", "Александр", "Сергей",
-                "Алексей", "Михаил", "Артем", "Кирилл",
+                    "Петр", "Дмитрий", "Александр", "Сергей",
+                    "Алексей", "Михаил", "Артем", "Кирилл",
                 };
             string[] womenName =
                 {
@@ -37,6 +38,7 @@
             Random random = new Random();
 
             Gender gender = (Gender)random.Next(2);
+            //TODO: duplication
             int age = random.Next(1, 120);
             string name;
             string surname;

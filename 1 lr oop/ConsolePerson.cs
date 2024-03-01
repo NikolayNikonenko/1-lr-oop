@@ -47,6 +47,7 @@
                     }
                     else
                     {
+                        //TODO: RSDN
                         throw new ArgumentException("Фамилия и имя должны быть написаны на одном языке," +
                             " введите повторно!");
                     }
@@ -57,6 +58,7 @@
                     bool result = ushort.TryParse(Console.ReadLine(), out ushort age);
                     if (result != true)
                     {
+                        //TODO: RSDN
                         throw new ArgumentException("Возраст не должен быть отрицательным, и должен быть числом," +
                             " введите повторно!");
                     }
@@ -69,6 +71,7 @@
                 {
                     Console.WriteLine("Введите пол человека(Мужской/Женский)");
                     string inputGender = Console.ReadLine().ToLower();
+                    //TODO: switch-case
                     if (inputGender == "м" || inputGender == "m")
                     {
                          newPerson.Gender = Gender.Male;
@@ -105,21 +108,20 @@
                     action.Invoke();
                     return;
                 }
-                catch (FormatException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
-                }
-                catch (ArgumentOutOfRangeException ex)
-                {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
-                }
-                catch (ArgumentNullException ex)
-                {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
-                }
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine($"Возникло исключение {ex.Message}");
+                    var exceptionType = ex.GetType();
+                    if (exceptionType == typeof(FormatException)
+                        || exceptionType == typeof(ArgumentOutOfRangeException)
+                        || exceptionType == typeof(ArgumentNullException)
+                        || exceptionType == typeof(ArgumentException))
+                    {
+                        Console.WriteLine($"Возникло исключение {ex.Message}");
+                    }
+                    else
+                    {
+                        throw ex;
+                    }
                 }
 
                 Console.WriteLine("\n!Ошибка ввода!\nПопробуйте снова:");

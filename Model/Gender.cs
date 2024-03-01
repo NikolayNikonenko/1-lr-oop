@@ -1,18 +1,18 @@
 ﻿namespace Model
 {
+    /// <summary>
+    /// ол персоны.
+    /// </summary>
+    public enum Gender
+    {
         /// <summary>
-        /// ол персоны.
+        /// Мужской пол.
         /// </summary>
-        public enum Gender
-        {
-            /// <summary>
-            /// Мужской пол.
-            /// </summary>
-            Male,
+        Male,
 
-            /// <summary>
-            /// Женский пол.
-            /// </summary>
-            Female
-        }
+        /// <summary>
+        /// Женский пол.
+        /// </summary>
+        Female
+    }
 }
