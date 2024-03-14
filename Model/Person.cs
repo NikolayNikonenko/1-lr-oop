@@ -135,8 +135,8 @@
         /// <returns>Информация о человеке.</returns>
         public string GetInfo()
         {
-            //TODO: error
-            return $"Perconname: {this._name}, Sername: {this._surname}," +
+            //TODO: error+
+            return $"PersonName: {this.Name}, Sername: {this.Surename}," +
                 $" Age: {this.Age}, Gender: {this.Gender}";
         }
 
@@ -149,11 +149,11 @@
         /// <param name="gender">пол.</param>
         public Person(string name, string surname, int age, Gender gender)
         {
-            //TODO: to properties
-            _name = name;
-            _surname = surname;
-            _age = age;
-            _gender = gender;
+            //TODO: to properties+
+            Name = name;
+            Surename = surname;
+            Age = age;
+            Gender = gender;
         }
 
         /// <summary>
