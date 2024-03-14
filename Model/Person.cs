@@ -136,7 +136,7 @@
         public string GetInfo()
         {
             //TODO: error+
-            return $"PersonName: {this.Name}, Sername: {this.Surename}," +
+            return $"PersonName: {this.Name}, Surename: {this.Surename}," +
                 $" Age: {this.Age}, Gender: {this.Gender}";
         }
 
