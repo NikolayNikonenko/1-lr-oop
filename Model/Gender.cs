@@ -1,7 +1,7 @@
 ﻿namespace Model
 {
         /// <summary>
-        /// ол персоны.
+        /// пол персоны.
         /// </summary>
         public enum Gender
         {
@@ -13,6 +13,11 @@
             /// <summary>
             /// Женский пол.
             /// </summary>
-            Female
+            Female,
+
+            /// <summary>
+            /// Дефолтный пол.
+            /// </summary>
+            Deafault
         }
 }

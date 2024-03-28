@@ -17,8 +17,9 @@
 
             for (int i = 0; i < count; i++)
             {
-                Person pers = people.FindByIndex(i);
-                Console.WriteLine(pers.GetInfo());
+                Console.WriteLine($"\n Персона №{i + 1}:");
+                PersonBase persona = people.FindByIndex(i);
+                Console.WriteLine(persona.GetInfo());
             }
         }
 
@@ -26,22 +27,22 @@
         /// Добавление персоны через консоль.
         /// </summary>
         /// <returns> Новая персона.</returns>
-        public static Person AddPersonWithConsole()
+        public static PersonBase AddPersonWithConsole()
         {
-            Person newPerson = new Person();
+            PersonBase newPerson = new Adult();
             var actionList = new List<Action>
             {
                 () =>
                 {
                     Console.WriteLine("Введите имя человека");
                     string name = Console.ReadLine();
-                    newPerson.Name = Person.CheckString(name);
+                    newPerson.Name = PersonBase.CheckString(name);
                 },
                 () =>
                 {
                     Console.WriteLine("Введите фамилию человека");
-                    string surename = Person.CheckString(Console.ReadLine());
-                    if (Person.CheckLanguage(newPerson.Name) == Person.CheckLanguage(surename))
+                    string surename = PersonBase.CheckString(Console.ReadLine());
+                    if (PersonBase.CheckLanguage(newPerson.Name) == PersonBase.CheckLanguage(surename))
                     {
                         newPerson.Surename = surename;
                     }
@@ -91,7 +92,6 @@
                              "введите: м если мужской или: ж если женский");
                         }
                     }
-
                 },
             };
             foreach (var action in actionList)
@@ -102,10 +102,6 @@
             return newPerson;
         }
 
-        /// <summary>
-        /// Получение значений, введенных пользователемю.
-        /// </summary>
-        /// <param name="action">Действие.</param>
         private static void ActionHandler(Action action)
         {
             while (true)
@@ -136,3 +132,4 @@
         }
     }
 }
+       

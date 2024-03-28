@@ -5,37 +5,37 @@
     /// <summary>
     /// Класс Person.
     /// </summary>
-    public class Person
+    public abstract class PersonBase
     {
         /// <summary>
         /// имя персоны.
         /// </summary>
-        private string _name;
+        protected string _name;
 
         /// <summary>
         /// фамилия персоны.
         /// </summary>
-        private string _surname;
+        protected string _surname;
 
         /// <summary>
         /// введенный возраст.
         /// </summary>
-        private int _age;
+        protected int _age;
 
         /// <summary>
         /// Пол.
         /// </summary>
-        private Gender _gender;
+        protected Gender _gender;
 
         /// <summary>
         /// Минимальный возраст.
         /// </summary>
-        public const int Min = 0;
+        public abstract int MinAge { get; }
 
         /// <summary>
         /// Максимальный возраст.
         /// </summary>
-        public const int Max = 120;
+        public abstract int MaxAge { get; }
 
         /// <summary>
         /// возраст персоны.
@@ -82,17 +82,10 @@
         /// <summary>
         /// Возраст персоны.
         /// </summary>
-        public int Age
+        public abstract int Age
         {
-            get
-            {
-                return _age;
-            }
-
-            set
-            {
-                _age = CheckAge(value);
-            }
+            get;
+            set;
         }
 
         /// <summary>
@@ -133,21 +126,21 @@
         /// информация о человеке.
         /// </summary>
         /// <returns>Информация о человеке.</returns>
-        public string GetInfo()
+        public virtual string GetInfo()
         {
             //TODO: error+
-            return $"PersonName: {this.Name}, Surename: {this.Surename}," +
-                $" Age: {this.Age}, Gender: {this.Gender}";
+            return $" Имя персоны: {Name}, Фамилия персоны: {Surename}," +
+                $" Возраст персоны: {Age}, Пол персоны: {Gender}";
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Person"/> class.
+        /// Initializes a new instance of the <see cref="PersonBase"/> class.
         /// </summary>
         /// <param name="name">Имя человека.</param>
         /// <param name="surname">Фамилия человека.</param>
         /// <param name="age">Возраст.</param>
         /// <param name="gender">пол.</param>
-        public Person(string name, string surname, int age, Gender gender)
+        protected PersonBase(string name, string surname, int age, Gender gender)
         {
             //TODO: to properties+
             Name = name;
@@ -157,10 +150,10 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Person"/> class.
+        /// Initializes a new instance of the <see cref="PersonBase"/> class.
         /// Дефолтный конструктор.
         /// </summary>
-        public Person()
+        protected PersonBase()
         {
         }
 
@@ -171,18 +164,7 @@
         /// <returns>Возраст персоны.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Выдает исключение ,
         /// в случае выхода возраста за диапазон.</exception>
-        public static int CheckAge(int value)
-        {
-            if (value <= Max && value >= Min)
-            {
-                return value;
-            }
-            else
-            {
-                throw new ArgumentException("Введен некорректный возраст," +
-                    $"введите возраст от {Min} до {Max} лет");
-            }
-        }
+        protected abstract int CheckAge(int value);
 
         /// <summary>
         /// Возможность ввода двойного имени или фамилии.

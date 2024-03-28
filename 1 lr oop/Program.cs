@@ -22,83 +22,39 @@
                 " персон, в каждом из которых будет по три человека.");
             Console.ReadKey();
 
-            PersonList personList1 = new PersonList();
-            PersonList personList2 = new PersonList();
+            PersonList personList = new PersonList();
 
-            // Создание исходного списка персон 1
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 7; i++)
             {
-                personList1.Add(RandomPerson.GetRandomPerson());
+                personList.Add(RandomPerson.GetRandomPersonAgeCategory());
             }
 
-            // Создание исходного списка персон 2
-            for (int i = 0; i < 3; i++)
+            // Печать списка
+            Console.WriteLine("Список персон:");
+            ConsolePerson.Print(personList);
+            Console.WriteLine("\n\t Тип четвертого человека в списке:\n");
+            Console.ReadKey();
+            PersonBase person = personList.FindByIndex(3);
+
+            switch (person)
             {
-                personList2.Add(RandomPerson.GetRandomPerson());
+                case Adult adult:
+                    {
+                        Console.WriteLine("Это взрослый !");
+                        adult.GetAdultDrinking();
+                        break;
+                    }
+
+                case Child child:
+                    {
+                        Console.WriteLine("Это ребенок");
+                        child.GetChildDrinking();
+                        break;
+                    }
+
+                default:
+                    break;
             }
-
-            // b. Вывод содержимое каждого списка персон на экран
-            Console.WriteLine("\n\t\tВывод списков на экран.");
-            Console.ReadKey();
-
-            // Печать исходного списка 1
-            Console.WriteLine("Список №1:");
-            ConsolePerson.Print(personList1);
-
-            // Печать исходного списка 2
-            Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personList2);
-
-            // c. Добавление нового человека в список 1
-            Console.WriteLine("\n\t\tДобавление человека в список №1.");
-            Console.ReadKey();
-            personList1.Add(ConsolePerson.AddPersonWithConsole());
-
-            // Печать списка 1
-            Console.WriteLine("\nСписок №1 с добавлением:");
-            ConsolePerson.Print(personList1);
-
-            // d.Скопируйте второго человека из первого списка
-            // в конец второго списка.
-            // Покажите, что один и тот же человек
-            // находится в обоих списках.
-            Console.WriteLine();
-            Console.WriteLine("\n\t\tКопирование 2-ого человека из" +
-                " первого списка в конец второго списка.");
-            Console.ReadKey();
-            personList2.Add(personList1.FindByIndex(1));
-
-            Console.WriteLine("\nСписок №1:");
-            ConsolePerson.Print(personList1);
-
-            Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personList2);
-
-            // e.Удалите второго человека из первого списка. Покажите, что
-            // удаление человека из первого списка
-            // не привело к уничтожениютэтого же человека во втором списке.
-            Console.WriteLine("\n\t\tУдаление второго человека" +
-                " из первого списка.");
-            Console.ReadKey();
-            personList1.DeleteByIndex(1);
-
-            Console.WriteLine("\nСписок №1:");
-            ConsolePerson.Print(personList1);
-
-            Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personList2);
-
-            // f.Очистка второго списка.
-            Console.WriteLine("\n\t\tОчищение второго списка.");
-            Console.ReadKey();
-            personList2.DeleteAll();
-
-            Console.WriteLine("\nСписок №1:");
-            ConsolePerson.Print(personList1);
-
-            Console.WriteLine("\nСписок №2:");
-            ConsolePerson.Print(personList2);
-            Console.ReadKey();
         }
     }
 }

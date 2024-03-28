@@ -8,13 +8,13 @@
         /// <summary>
         /// Список персон
         /// </summary>
-        private List<Person> _peoples = new List<Person>();
+        private List<PersonBase> _peoples = new List<PersonBase>();
 
         /// <summary>
         /// Добавление персоны.
         /// </summary>
         /// <param name="person">Персона.</param>
-        public void Add(Person person)
+        public void Add(PersonBase person)
         {
             _peoples.Add(person);
         }
@@ -51,7 +51,7 @@
         /// <param name="index">Индекс персоны.</param>
         /// <returns>Персону с заданным индексом.</returns>
         /// <exception cref="IndexOutOfRangeException">если отстутствует заданный индекс.</exception>
-        public Person FindByIndex(int index)
+        public PersonBase FindByIndex(int index)
         {
             int countIndex = _peoples.Count - 1;
 
